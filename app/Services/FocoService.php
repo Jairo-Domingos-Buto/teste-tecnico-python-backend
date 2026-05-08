@@ -19,7 +19,9 @@ class FocoService
         $diagnosticos = $this->repository->diagnostic();
 
         if ($diagnosticos->isEmpty()) {
-            throw new \Exception("Nenhum registro encontrado para gerar diagnóstico.", 404);
+            return [
+                "message" => "Nenhum registro encontrado para gerar diagnóstico.",
+            ];
         }
 
         $mediaFoco = $diagnosticos->avg("nivel_foco");
